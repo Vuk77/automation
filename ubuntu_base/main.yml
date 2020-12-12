@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: yes
+  vars:
+    #user_dir: "/home/deploy/docker"
+    puid: "1000"
+    guid: "1000"
+    tz: "America/New_York"
+  tasks:
+    - include_role:
+        name: common-tools 

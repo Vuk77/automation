@@ -1,0 +1,24 @@
+- name: provjera
+  debug: 
+    msg: "test poruka"
+
+- name: instalacija osnovnih alata 
+  apt:
+    name: ['curl', 'vim', 'htop', 'net-tools']
+    state: present 
+
+
+- name: download visual studio code 
+  get_url:
+    url: https://go.microsoft.com/fwlink/?LinkID=760868
+    dest: /tmp/visual-studio-code.deb
+    mode: 0755 
+
+- name: install visual studio code
+  apt:
+    deb: /tmp/visual-studio-code.deb
+
+- name: obrisemo /tmp/visual-studio-code.deb
+  file:
+    path: /tmp/visual-studio-code.deb
+    state: absent
